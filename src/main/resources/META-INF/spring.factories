@@ -1,0 +1,5 @@
+org.springframework.context.ApplicationContextInitializer=\
+com.mission.wolf.bootlean.listener.HelloApplicationContextInitializer
+
+org.springframework.boot.SpringApplicationRunListener=\
+com.mission.wolf.bootlean.listener.HelloSpringApplicationRunListener
