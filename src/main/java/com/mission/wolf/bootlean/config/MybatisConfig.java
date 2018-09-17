@@ -10,7 +10,6 @@ import org.springframework.context.annotation.Bean;
  * 2018/9/9 12:38
  */
 @org.springframework.context.annotation.Configuration
-@MapperScan(basePackages = "com.mission.wolf.bootlean.mapper")
 public class MybatisConfig {
   @Bean
   public ConfigurationCustomizer configurationCustomizer() {

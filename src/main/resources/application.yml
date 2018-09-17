@@ -25,8 +25,19 @@ spring:
     useGlobalDataSourceStat: true
     connectionProperties: druid.stat.mergeSql=true;druid.stat.slowSqlMillis=500
 
+
 wolf:
   hello:
     prefix: wolf
     suffix: mission
 
+logging:
+  level:
+    com:
+      mission:
+        wolf:
+          bootlean:
+            mapper: debug
+mybatis:
+  mapper-locations:
+    - classpath:/mappers/**/*Mapper.xml
