@@ -1,6 +1,8 @@
 package com.mission.wolf.bootlean.entities;
 
-public class Dept {
+import java.io.Serializable;
+
+public class Dept implements Serializable {
     private Integer id;
 
     private String name;
