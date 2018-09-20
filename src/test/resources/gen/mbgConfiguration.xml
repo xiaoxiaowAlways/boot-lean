@@ -8,8 +8,10 @@
     <properties resource="gen/jdbc.properties"/>
 
     <!-- 配置数据库驱动的jar包路径 -->
+    <!--<classPathEntry
+            location="D:/maven-repos/mysql/mysql-connector-java/5.1.39/mysql-connector-java-5.1.39.jar"/>-->
     <classPathEntry
-            location="D:/maven-repos/mysql/mysql-connector-java/5.1.39/mysql-connector-java-5.1.39.jar"/>
+        location="/Users/wilwang3/Documents/mvn-repos/mysql/mysql-connector-java/5.1.45//mysql-connector-java-5.1.45.jar"/>
 
     <context id="default" targetRuntime="MyBatis3">
 
@@ -35,7 +37,7 @@
             <property name="forceBigDecimals" value="false"/>
         </javaTypeResolver>
 
-        <javaModelGenerator targetPackage="com.mission.wolf.bootlean.entities"
+        <javaModelGenerator targetPackage="com.publicismedia.dti.cityradarboot.model"
                             targetProject="src/main/java">
             <!-- 是否允许子包，即targetPackage.schemaName.tableName -->
             <property name="enableSubPackages" value="false"/>
@@ -53,19 +55,14 @@
         </sqlMapGenerator>
 
         <!-- targetPackage：mapper接口dao生成的位置 -->
-        <javaClientGenerator type="XMLMAPPER" targetPackage="com.mission.wolf.bootlean.mapper"
+        <javaClientGenerator type="XMLMAPPER" targetPackage="com.publicismedia.dti.cityradarboot.mapper"
                              targetProject="src/main/java">
             <!-- enableSubPackages:是否让schema作为包的后缀 -->
             <property name="enableSubPackages" value="false"/>
         </javaClientGenerator>
 
-        <table tableName="dept"
-               domainObjectName="Dept"
-               enableCountByExample="false"
-               enableUpdateByExample="false"
-               enableDeleteByExample="false"
-               enableSelectByExample="false"
-               selectByExampleQueryId="false">
+        <table tableName="user_customized_data" domainObjectName="UserCustomizedData" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false">
+            <columnOverride column="filter" jdbcType="VARCHAR"/>
         </table>
 
     </context>

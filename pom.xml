@@ -75,12 +75,14 @@
             <artifactId>lombok</artifactId>
         </dependency>
 
-        <!--自定义starter-->
+        <!-- fastjson  -->
         <dependency>
-            <groupId>com.wolf.starter</groupId>
-            <artifactId>wolf-spring-boot-starter</artifactId>
-            <version>1.0-SNAPSHOT</version>
+            <groupId>com.alibaba</groupId>
+            <artifactId>fastjson</artifactId>
+            <version>1.2.47</version>
         </dependency>
+
+
         <!--cache-->
         <dependency>
             <groupId>org.springframework.boot</groupId>
