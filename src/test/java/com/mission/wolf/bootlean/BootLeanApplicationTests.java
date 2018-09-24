@@ -3,6 +3,10 @@ package com.mission.wolf.bootlean;
 import com.mission.wolf.bootlean.entities.Dept;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.springframework.amqp.core.AmqpAdmin;
+import org.springframework.amqp.core.Binding;
+import org.springframework.amqp.core.DirectExchange;
+import org.springframework.amqp.core.Queue;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -35,6 +39,9 @@ public class BootLeanApplicationTests {
 
   @Autowired
   RabbitTemplate rabbitTemplate;
+
+  @Autowired
+  AmqpAdmin amqpAdmin;
 
   @Test
   public void contextLoads() {
@@ -84,7 +91,20 @@ public class BootLeanApplicationTests {
 
   @Test
   public void amqpSendMsgFanout() {
-    rabbitTemplate.convertAndSend("exchange.fanout", "", new Dept(2, "xiaoxiaowNews"));
+    rabbitTemplate.convertAndSend("exchange.fanout", "", new Dept(2, "大灰狼"));
+  }
+
+
+  @Test
+  public void createExchange() {
+    //创建exchange
+    //amqpAdmin.declareExchange(new DirectExchange("amqpadmin.exchange"));
+    //创建Queue
+//    amqpAdmin.declareQueue(new Queue("amqpadmin.queue", true));
+    //创建绑定规则
+    amqpAdmin.declareBinding(new Binding("amqpadmin.queue", Binding.DestinationType.QUEUE,
+      "amqpadmin.exchange", "amqp.haha", null)
+    );
 
   }
 }

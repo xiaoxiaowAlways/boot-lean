@@ -1,34 +1,37 @@
 package com.mission.wolf.bootlean.entities;
 
+import lombok.ToString;
+
 import java.io.Serializable;
 
+@ToString
 public class Dept implements Serializable {
-    private Integer id;
+  private Integer id;
 
-    private String name;
+  private String name;
 
-    public Dept(Integer id, String name) {
-        this.id = id;
-        this.name = name;
-    }
+  public Dept(Integer id, String name) {
+    this.id = id;
+    this.name = name;
+  }
 
-    public Dept() {
-        super();
-    }
+  public Dept() {
+    super();
+  }
 
-    public Integer getId() {
-        return id;
-    }
+  public Integer getId() {
+    return id;
+  }
 
-    public void setId(Integer id) {
-        this.id = id;
-    }
+  public void setId(Integer id) {
+    this.id = id;
+  }
 
-    public String getName() {
-        return name;
-    }
+  public String getName() {
+    return name;
+  }
 
-    public void setName(String name) {
-        this.name = name == null ? null : name.trim();
-    }
+  public void setName(String name) {
+    this.name = name == null ? null : name.trim();
+  }
 }
