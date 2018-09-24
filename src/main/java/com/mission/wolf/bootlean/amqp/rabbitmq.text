@@ -1,0 +1,9 @@
+msg
+    exchange.direct
+    exchange.fanout
+    wolf
+    wolf.news
+    wolf.emps
+    xiaoxiaow.news
+
+    exchange.topic
