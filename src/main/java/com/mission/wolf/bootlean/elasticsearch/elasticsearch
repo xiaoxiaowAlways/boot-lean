@@ -1,0 +1,32 @@
+安装
+docker pull registry.docker-cn.com/library/elasticsearch
+
+启动
+# 9200 调用端口
+# 9300 集群间通讯端口
+docker run -e ES_JAVA_OPTS="-Xms256m -Xmx256m" -d -p 9200:9200 -p 9300:9300 --name ES01 5acf0e8da90b
+
+适配版ES
+docker pull registry.docker-cn.com/library/elasticsearch:2.4.6
+docker run -e ES_JAVA_OPTS="-Xms256m -Xmx256m" -d -p 9201:9200 -p 9301:9300 --name ES01 5e9d896dc62c
+
+测试
+ip:9200
+
+资料
+https://www.elastic.co/guide/cn/elasticsearch/guide/current/_indexing_employee_documents.html
+
+
+
+
+SpringBoot默认支持两种技术来和ES交互
+1.Jest (默认不生效)
+    需要导入  io.searchbox.client.JestClient;
+2.SpringData ElasticSearch
+    1）Client clusterNodes clusterName
+    2）ElasticsearchTemplate 操作es
+    3）编写ElasticsearchRepository（类似于JAP的操作）子接口
+
+
+适配规则
+https://github.com/spring-projects/spring-data-elasticsearch

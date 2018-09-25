@@ -1,6 +1,11 @@
 package com.mission.wolf.bootlean;
 
 import com.mission.wolf.bootlean.entities.Dept;
+import com.mission.wolf.bootlean.repository.ESDeptRepository;
+import io.searchbox.client.JestClient;
+import io.searchbox.core.Index;
+import io.searchbox.core.Search;
+import io.searchbox.core.SearchResult;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.amqp.core.AmqpAdmin;
@@ -16,6 +21,7 @@ import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import javax.sql.DataSource;
+import java.io.IOException;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
@@ -42,6 +48,48 @@ public class BootLeanApplicationTests {
 
   @Autowired
   AmqpAdmin amqpAdmin;
+
+  @Autowired
+  JestClient jestClient;
+
+  @Autowired
+  ESDeptRepository esDeptRepository;
+
+  @Test
+  public void repositorySaveIndex() throws IOException {
+    Dept dept = new Dept(2, "xiaoxiaow ES 01 Test");
+    //构建索引
+    esDeptRepository.index(dept);
+  }
+
+  @Test
+  public void repositorySearch() throws IOException {
+    //构建搜索
+    esDeptRepository.findByNameLike("ES").forEach(System.out::println);
+  }
+
+  @Test
+  public void saveIndex() throws IOException {
+    Dept dept = new Dept(2, "xiaoxiaow ES 01 Test");
+    //构建索引
+    Index index = new Index.Builder(dept).index("xiaoxiaow").type("news").build();
+    jestClient.execute(index);
+  }
+
+  @Test
+  public void searchIndex() throws IOException {
+    String json = "{\n" +
+      "    \"query\" : {\n" +
+      "        \"match\" : {\n" +
+      "            \"name\" : \"ES\"\n" +
+      "        }\n" +
+      "    }\n" +
+      "}";
+    Search build = new Search.Builder(json).addIndex("xiaoxiaow").addType("news").build();
+    SearchResult result = jestClient.execute(build);
+    System.out.println(result.getJsonString());
+    System.out.println(result.getHits(Dept.class));
+  }
 
   @Test
   public void contextLoads() {

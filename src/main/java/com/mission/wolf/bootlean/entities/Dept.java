@@ -1,11 +1,15 @@
 package com.mission.wolf.bootlean.entities;
 
+import io.searchbox.annotations.JestId;
 import lombok.ToString;
+import org.springframework.data.elasticsearch.annotations.Document;
 
 import java.io.Serializable;
 
 @ToString
+@Document(indexName = "xiaoxiaow",type = "news")
 public class Dept implements Serializable {
+  @JestId
   private Integer id;
 
   private String name;
