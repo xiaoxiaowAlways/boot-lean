@@ -30,13 +30,23 @@ spring:
     host: 192.168.199.248
     username: guest
     password: guest
-  elasticsearch:
-    jest:
-      uris: http://192.168.199.248:9200
-  data:
-    elasticsearch:
-      cluster-nodes: 192.168.199.248:9301
-      cluster-name: elasticsearch
+#  elasticsearch:
+#    jest:
+#      uris: http://192.168.199.248:9200
+#  data:
+#    elasticsearch:
+#      cluster-nodes: 192.168.199.248:9301
+#      cluster-name: elasticsearch
+
+  mail:
+    host: smtp.qq.com
+    username: 1281580625@qq.com
+    password: wneusyjavhugbafi
+    properties:
+      mail:
+        smtp:
+          ssl:
+            enable: true
 wolf:
   hello:
     prefix: wolf
