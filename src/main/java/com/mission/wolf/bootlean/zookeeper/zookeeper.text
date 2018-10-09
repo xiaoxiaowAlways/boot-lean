@@ -1,0 +1,5 @@
+下载
+docker pull registry.docker-cn.com/library/zookeeper
+
+启动
+docker run --name zk01 -p 2181:2181 --restart always -d 89f7884dcc4e

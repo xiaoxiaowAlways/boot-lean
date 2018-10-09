@@ -29,10 +29,15 @@
     </properties>
 
     <dependencies>
+        <!--spring boot 启动器-->
         <dependency>
-            <!--spring boot 启动器-->
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
+        <!--actuator-->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-actuator</artifactId>
         </dependency>
         <!--jdbc mysql-->
         <dependency>
@@ -67,8 +72,6 @@
             <artifactId>jest</artifactId>
             <version>5.3.4</version>
         </dependency>
-
-
         <!--jpa-->
         <!--<dependency>
             <groupId>org.springframework.boot</groupId>

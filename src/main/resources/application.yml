@@ -62,3 +62,6 @@ logging:
 mybatis:
   mapper-locations:
     - classpath:/mappers/**/*Mapper.xml
+management:
+  security:
+    enabled: false
